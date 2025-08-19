@@ -1,0 +1,97 @@
+[
+  { "id": 1, "name": "Drink Water", "startDate": "2025-01-01", "streak": 5 },
+  { "id": 2, "name": "Exercise", "startDate": "2025-01-02", "streak": 3 },
+  { "id": 3, "name": "Meditate", "startDate": "2025-01-03", "streak": 7 },
+  { "id": 4, "name": "Read", "startDate": "2025-01-04", "streak": 2 },
+  { "id": 5, "name": "Sleep 8 Hours", "startDate": "2025-01-05", "streak": 4 },
+  { "id": 6, "name": "Journal", "startDate": "2025-01-06", "streak": 1 },
+  { "id": 7, "name": "Walk 10k Steps", "startDate": "2025-01-07", "streak": 8 },
+  { "id": 8, "name": "No Sugar", "startDate": "2025-01-08", "streak": 3 },
+  { "id": 9, "name": "Floss Teeth", "startDate": "2025-01-09", "streak": 6 },
+  {
+    "id": 10,
+    "name": "Learn a Language",
+    "startDate": "2025-01-10",
+    "streak": 2
+  },
+  { "id": 11, "name": "Drink Water", "startDate": "2025-01-11", "streak": 5 },
+  { "id": 12, "name": "Exercise", "startDate": "2025-01-12", "streak": 3 },
+  { "id": 13, "name": "Meditate", "startDate": "2025-01-13", "streak": 7 },
+  { "id": 14, "name": "Read", "startDate": "2025-01-14", "streak": 2 },
+  { "id": 15, "name": "Sleep 8 Hours", "startDate": "2025-01-15", "streak": 4 },
+  { "id": 16, "name": "Journal", "startDate": "2025-01-16", "streak": 1 },
+  {
+    "id": 17,
+    "name": "Walk 10k Steps",
+    "startDate": "2025-01-17",
+    "streak": 8
+  },
+  { "id": 18, "name": "No Sugar", "startDate": "2025-01-18", "streak": 3 },
+  { "id": 19, "name": "Floss Teeth", "startDate": "2025-01-19", "streak": 6 },
+  {
+    "id": 20,
+    "name": "Learn a Language",
+    "startDate": "2025-01-20",
+    "streak": 2
+  },
+  { "id": 21, "name": "Drink Water", "startDate": "2025-01-21", "streak": 5 },
+  { "id": 22, "name": "Exercise", "startDate": "2025-01-22", "streak": 3 },
+  { "id": 23, "name": "Meditate", "startDate": "2025-01-23", "streak": 7 },
+  { "id": 24, "name": "Read", "startDate": "2025-01-24", "streak": 2 },
+  { "id": 25, "name": "Sleep 8 Hours", "startDate": "2025-01-25", "streak": 4 },
+  { "id": 26, "name": "Journal", "startDate": "2025-01-26", "streak": 1 },
+  {
+    "id": 27,
+    "name": "Walk 10k Steps",
+    "startDate": "2025-01-27",
+    "streak": 8
+  },
+  { "id": 28, "name": "No Sugar", "startDate": "2025-01-28", "streak": 3 },
+  { "id": 29, "name": "Floss Teeth", "startDate": "2025-01-29", "streak": 6 },
+  {
+    "id": 30,
+    "name": "Learn a Language",
+    "startDate": "2025-01-30",
+    "streak": 2
+  },
+  { "id": 31, "name": "Drink Water", "startDate": "2025-02-01", "streak": 5 },
+  { "id": 32, "name": "Exercise", "startDate": "2025-02-02", "streak": 3 },
+  { "id": 33, "name": "Meditate", "startDate": "2025-02-03", "streak": 7 },
+  { "id": 34, "name": "Read", "startDate": "2025-02-04", "streak": 2 },
+  { "id": 35, "name": "Sleep 8 Hours", "startDate": "2025-02-05", "streak": 4 },
+  { "id": 36, "name": "Journal", "startDate": "2025-02-06", "streak": 1 },
+  {
+    "id": 37,
+    "name": "Walk 10k Steps",
+    "startDate": "2025-02-07",
+    "streak": 8
+  },
+  { "id": 38, "name": "No Sugar", "startDate": "2025-02-08", "streak": 3 },
+  { "id": 39, "name": "Floss Teeth", "startDate": "2025-02-09", "streak": 6 },
+  {
+    "id": 40,
+    "name": "Learn a Language",
+    "startDate": "2025-02-10",
+    "streak": 2
+  },
+  { "id": 41, "name": "Drink Water", "startDate": "2025-02-11", "streak": 5 },
+  { "id": 42, "name": "Exercise", "startDate": "2025-02-12", "streak": 3 },
+  { "id": 43, "name": "Meditate", "startDate": "2025-02-13", "streak": 7 },
+  { "id": 44, "name": "Read", "startDate": "2025-02-14", "streak": 2 },
+  { "id": 45, "name": "Sleep 8 Hours", "startDate": "2025-02-15", "streak": 4 },
+  { "id": 46, "name": "Journal", "startDate": "2025-02-16", "streak": 1 },
+  {
+    "id": 47,
+    "name": "Walk 10k Steps",
+    "startDate": "2025-02-17",
+    "streak": 8
+  },
+  { "id": 48, "name": "No Sugar", "startDate": "2025-02-18", "streak": 3 },
+  { "id": 49, "name": "Floss Teeth", "startDate": "2025-02-19", "streak": 6 },
+  {
+    "id": 50,
+    "name": "Learn a Language",
+    "startDate": "2025-02-20",
+    "streak": 2
+  }
+]
