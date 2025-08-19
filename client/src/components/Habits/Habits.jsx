@@ -5,7 +5,7 @@ import { Habit } from '../Habit/Habit';
 const Habits = () => {
   return (
     <>
-      <h2 className='habits-container-title'>Your Habits</h2>
+      <h2 className='habits-container-title'>Your Daily Habits</h2>
       <div className='habits-container'>
         <Habit />
         <Habit />
