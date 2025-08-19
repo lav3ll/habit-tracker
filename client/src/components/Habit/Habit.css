@@ -1,0 +1,7 @@
+.habit-container {
+  width: 50%;
+  height: 50%;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  margin: 5px 5px 5px;
+}
