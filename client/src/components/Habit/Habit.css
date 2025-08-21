@@ -8,8 +8,13 @@
 }
 
 .habit-icon {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   display: flex;
   margin-left: auto;
   margin-top: auto;
+}
+
+.habit-icon:hover {
+  background-color: var(--primary-color);
+  cursor: pointer;
 }
