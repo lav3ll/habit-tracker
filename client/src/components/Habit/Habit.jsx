@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './Habit.css';
+import { BsCheckSquare } from 'react-icons/bs';
 
 export const Habit = () => {
   const [habitName, setHabitName] = useState('Drink Water Test Name');
@@ -15,6 +16,7 @@ export const Habit = () => {
 
   return (
     <div className={`habit-container ${hidden}`} onClick={handleClick}>
+      <BsCheckSquare className='habit-icon' />
       <div className='habit-title'>{habitName}</div>
       <div className='habit-start-date'>
         {startDate.toLocaleDateString('en-GB')}
