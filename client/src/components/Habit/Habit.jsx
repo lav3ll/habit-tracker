@@ -10,13 +10,13 @@ export const Habit = () => {
   const [startDate, setStartDate] = useState(new Date('2025-07-19'));
   const [streak, setStreak] = useState(0);
   const [hidden, setHidden] = useState(false);
-  const streakIconArr = [<ImFire />, <PiFireFill />];
+  const streakIconArr = [
+    <ImFire className='streak-icon' />,
+    <PiFireFill className='streak-icon' />,
+  ];
   const [streakIcon, setStreakIcon] = useState(streakIconArr[0]);
 
   function handleClick() {
-    alert(`${habitName} has been completed!`);
-    //create modal for popup instead of alert
-
     // Update the start date to today
 
     //Update the streak count
@@ -63,14 +63,15 @@ export const Habit = () => {
         aria-labelledby=''
         aria-hidden='true'
       >
+        {/* Modal for habit completion confirmation -->*/}
         <div className='modal-dialog'>
           <div className='modal-content'>
-            <div className='modal-header'>
-              <h1 className='modal-title fs-5' id=''>
+            <div className='modal-header justify-content-center'>
+              <h1 className='modal-title fs-5 text-center' id=''>
                 {habitName} Completed!
               </h1>
             </div>
-            <div className='modal-body'>...</div>
+            <div className='modal-body fs-6'>You have earned 1 skill point</div>
             <div className='modal-footer'>
               <button
                 type='button'
@@ -82,6 +83,7 @@ export const Habit = () => {
             </div>
           </div>
         </div>
+        {/* End of modal-->*/}
       </div>
     </div>
   );

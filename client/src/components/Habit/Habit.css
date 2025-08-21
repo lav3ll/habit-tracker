@@ -18,3 +18,24 @@
   background-color: var(--primary-color);
   cursor: pointer;
 }
+
+.habit-streak {
+  color: orange;
+  font-size: 1.5rem;
+}
+
+.habit-streak svg {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
