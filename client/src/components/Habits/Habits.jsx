@@ -23,10 +23,16 @@ const Habits = () => {
       <SelectHabit onHabitSelect={handleHabitSelect} />
 
       {/* Render all selected habits dynamically */}
-      <div className='habits-container'>
-        {userHabits.map((habit) => (
-          <Habit key={habit.id} habitName={habit.name} />
-        ))}
+      <div className='habits-container container text-center'>
+        <div class='row align-items-start'>
+          {userHabits.map((habit) => (
+            <Habit
+              key={habit.id}
+              name={habit.name}
+              startDate={habit.startDate}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

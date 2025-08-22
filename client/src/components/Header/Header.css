@@ -3,6 +3,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.header-container h1 {
+  color: var(--primary-color) !important;
+}
+
+.header-container p {
+  color: var(--primary-color) !important;
 }

@@ -8,7 +8,7 @@ const SelectHabit = ({ onHabitSelect }) => {
   }
 
   return (
-    <Form.Group controlId='habitSelect'>
+    <Form.Group controlId='habitSelect' className='w-50 mx-auto'>
       <Form.Label>Choose a Habit</Form.Label>
       <Form.Control as='select' defaultValue='0' onChange={handleChange}>
         <option value='0'>Select a Habit</option>
