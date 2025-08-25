@@ -1,10 +1,23 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
-  function isLoggedIn(loginStatus) {
-    loginStatus = true; // Change to false to simulate logged out state
+  const [loginStatus, setLoginStatus] = useState(false);
+
+  function handleLogOut() {
+    alert('Logging out...');
+    setLoginStatus(false);
+  }
+
+  function handleLogIn() {
+    alert('Logging In...');
+    setLoginStatus(true);
+  }
+
+  // Use state directly
+  function isLoggedIn() {
     if (loginStatus) {
       return (
         <>
@@ -27,18 +40,18 @@ const Header = () => {
             <hr className='dropdown-divider' />
           </li>
           <li>
-            <Link className='dropdown-item' to='/logout'>
+            <div className='dropdown-item btn' onClick={handleLogOut}>
               Log Out
-            </Link>
+            </div>
           </li>
         </>
       );
     } else {
       return (
         <li>
-          <Link className='dropdown-item' to='/login'>
+          <div className='dropdown-item btn' onClick={handleLogIn}>
             Log In
-          </Link>
+          </div>
         </li>
       );
     }
@@ -81,7 +94,7 @@ const Header = () => {
               <li className='nav-item dropdown'>
                 <a
                   className='nav-link dropdown-toggle'
-                  href='#'
+                  href='/#'
                   role='button'
                   data-bs-toggle='dropdown'
                   aria-expanded='false'
@@ -91,7 +104,7 @@ const Header = () => {
                 <ul className='dropdown-menu'>{isLoggedIn()}</ul>
               </li>
             </ul>
-            <span className='navbar-text'>
+            <span className='navbar-text d-none d-sm-block'>
               Track your habits and stay motivated!
             </span>
           </div>

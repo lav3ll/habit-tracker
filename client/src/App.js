@@ -5,6 +5,8 @@ import Habits from './components/Habits/Habits';
 import Header from './components/Header/Header';
 import Homepage from './components/Homepage/Homepage';
 import Leaderboard from './components/Leaderboard/Leaderboard';
+import Profile from './components/Profile/Profile';
+import Settings from './components/Settings/Settings';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -16,6 +18,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/leaderboard' element={<Leaderboard />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/settings' element={<Settings />} />
         {loggedIn && <Route path='/habits' element={<Habits />} />}
       </Routes>
     </BrowserRouter>

@@ -11,6 +11,6 @@
   color: var(--primary-color) !important;
 }
 
-.header-container p {
+.navbar-text {
   color: var(--primary-color) !important;
 }
