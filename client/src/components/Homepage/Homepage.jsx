@@ -3,6 +3,7 @@ import {
   Route,
   Routes,
   Outlet,
+  Link,
 } from 'react-router-dom';
 import './Homepage.css';
 import landingImages from '../utils/landing-images.svg';
@@ -49,6 +50,10 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+
+      <Link className='signup-btn' to='/Settings'>
+        <h2>JOIN NOW</h2>
+      </Link>
     </>
   );
 };

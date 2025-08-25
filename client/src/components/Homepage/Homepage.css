@@ -41,6 +41,31 @@
   background-image: var(--gradient-primary);
 }
 
+.signup-btn {
+  width: 20%;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  right: 15%;
+  background-color: transparent; /* Keep it consistent */
+  color: var(--white) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 10;
+  border: 3px solid var(--white); /* removes unwanted outlines if it's a button */
+
+  transform: scale(1.07, 1.05) skewX(-15deg);
+  background-image: var(--gradient-primary);
+  animation: pulse 1s infinite;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8);
+}
+
+.signup-btn:hover {
+  color: var(--secondary-color) !important;
+}
+
 .homepage_img1 {
   width: 100%;
 
@@ -55,8 +80,6 @@
 }
 @media (max-width: 425px) {
   .homepage_img1 {
-    display: flex;
-    position: absolute;
     justify-content: center !important;
     top: 55% !important;
   }
@@ -65,12 +88,28 @@
   .homepage_img1 {
     margin-top: -100px !important;
   }
+  .signup-btn {
+    top: 70% !important;
+    width: 80% !important;
+  }
 }
 
 @media (max-width: 768px) {
+  .homepage-container {
+    margin-top: -100px !important;
+  }
+}
+
+@media (max-width: 1024px) {
   .homepage-title {
-    font-size: 1.4rem;
-    transform: translateY(-20%);
+    font-size: 1.4rem !important;
+  }
+  .signup-btn {
+    top: 45%;
+    right: 10%;
+    width: 30%;
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
 
   .homepage-container {
