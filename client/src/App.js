@@ -6,7 +6,7 @@ import Homepage from './components/Homepage/Homepage';
 import { useState } from 'react';
 
 function App() {
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   return (
     <div className='App'>
       <Header />

@@ -1,26 +1,30 @@
 import React from 'react';
 import './Homepage.css';
-
+import characterImage from '../utils/character-image.svg';
+import landingImages from '../utils/landing-images.svg';
 const Homepage = () => {
   return (
     <>
-      <div className='homepage-container'>
-        <div className='content'>
-          <h1>Welcome to Habit Tracker</h1>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-            laudantium aut ipsam possimus quisquam neque, repellat sequi fugiat
-            consequatur laboriosam? Quo in veniam suscipit nisi quis. Suscipit
-            laudantium iste consectetur pariatur recusandae quam deleniti, culpa
-            dignissimos. Soluta voluptas cumque fuga provident vero modi enim.
-            Eveniet amet illum numquam, neque quo minus non quibusdam! Ea eaque
-            assumenda animi ipsa cumque qui quasi? Vel iste nemo, recusandae
-            pariatur laboriosam voluptates id aspernatur fugiat possimus
-            voluptas repellendus sunt repudiandae cum sequi consequatur
-            quibusdam iusto dolores saepe, natus nisi. Quaerat laborum harum
-            rerum ex, vitae ut, soluta consectetur perferendis, aspernatur iure
-            tenetur nam dolore.
-          </p>
+      <div className='homepage-container container-fluid vh-100'>
+        <div className='row h-100 align-items-center'>
+          {/* Left text */}
+          <div className='col-md-6 text-start px-5'>
+            <h1 className='homepage-title'>
+              <span className='highlight'>Level up your life</span> — turn daily
+              habits into points,
+              <br /> streaks, and&nbsp;
+              <span className='highlight'>rewards!</span>
+            </h1>
+          </div>
+
+          {/* Right image */}
+          <div className='col-md-6 d-flex justify-content-center'>
+            <img
+              src={landingImages}
+              alt='image from character creator'
+              className='homepage_img1 img-fluid'
+            />
+          </div>
         </div>
       </div>
     </>
