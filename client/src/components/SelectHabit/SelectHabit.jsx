@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import habitsData from '../utils/testHabitsData.json';
+import './SelectHabit.css';
 
 const SelectHabit = ({ onHabitSelect }) => {
   function handleChange(event) {
@@ -8,7 +9,10 @@ const SelectHabit = ({ onHabitSelect }) => {
   }
 
   return (
-    <Form.Group controlId='habitSelect' className='w-50 mx-auto'>
+    <Form.Group
+      controlId='habitSelect'
+      className='w-50 mx-auto custom-color-white'
+    >
       <Form.Label>Choose a Habit</Form.Label>
       <Form.Control as='select' defaultValue='0' onChange={handleChange}>
         <option value='0'>Select a Habit</option>

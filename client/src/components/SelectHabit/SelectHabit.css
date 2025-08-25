@@ -1,0 +1,12 @@
+#habitSelect {
+  border: 2px solid var(--secondary-color); /* change color & thickness */
+  border-radius: 8px; /* rounded edges */
+  background-color: var(--background-color); /* optional */
+  padding: 5px 10px; /* adjust spacing */
+  color: var(--white) !important; /* text color */
+}
+
+#habitSelect:focus {
+  border-color: var(--primary-color); /* highlight on focus */
+  box-shadow: 0 0 5px var(--secondary-color); /* glow effect */
+}
