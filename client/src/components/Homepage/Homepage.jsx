@@ -1,6 +1,10 @@
-import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Outlet,
+} from 'react-router-dom';
 import './Homepage.css';
-import characterImage from '../utils/character-image.svg';
 import landingImages from '../utils/landing-images.svg';
 const Homepage = () => {
   return (
