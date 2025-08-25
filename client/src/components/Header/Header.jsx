@@ -1,13 +1,49 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Outlet,
-} from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
+  function isLoggedIn(loginStatus) {
+    loginStatus = true; // Change to false to simulate logged out state
+    if (loginStatus) {
+      return (
+        <>
+          <li>
+            <Link className='dropdown-item' to='/profile'>
+              Profile
+            </Link>
+          </li>
+          <li>
+            <Link className='dropdown-item' to='/settings'>
+              Settings
+            </Link>
+          </li>
+          <li>
+            <Link className='dropdown-item' to='/friends'>
+              Friends
+            </Link>
+          </li>
+          <li>
+            <hr className='dropdown-divider' />
+          </li>
+          <li>
+            <Link className='dropdown-item' to='/logout'>
+              Log Out
+            </Link>
+          </li>
+        </>
+      );
+    } else {
+      return (
+        <li>
+          <Link className='dropdown-item' to='/login'>
+            Log In
+          </Link>
+        </li>
+      );
+    }
+  }
+
   return (
     <>
       <nav
@@ -15,9 +51,9 @@ const Header = () => {
         data-bs-theme='dark'
       >
         <div className='container-fluid'>
-          <a className='navbar-brand' href='#'>
+          <Link className='navbar-brand' to='/'>
             <h1>Rising Impact</h1>
-          </a>
+          </Link>
           <button
             className='navbar-toggler'
             type='button'
@@ -29,17 +65,18 @@ const Header = () => {
           >
             <span className='navbar-toggler-icon'></span>
           </button>
+
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
-                <a className='nav-link active' aria-current='page' href='#'>
+                <Link className='nav-link' to='/'>
                   Home
-                </a>
+                </Link>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='#'>
+                <Link className='nav-link' to='/leaderboard'>
                   Leaderboard
-                </a>
+                </Link>
               </li>
               <li className='nav-item dropdown'>
                 <a
@@ -51,35 +88,12 @@ const Header = () => {
                 >
                   Account
                 </a>
-                <ul className='dropdown-menu'>
-                  <li>
-                    <a className='dropdown-item' href='#'>
-                      Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a className='dropdown-item' href='#'>
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a className='dropdown-item' href='#'>
-                      Friends
-                    </a>
-                  </li>
-                  <li>
-                    <hr className='dropdown-divider' />
-                  </li>
-                  <li>
-                    <a className='dropdown-item' href='#'>
-                      Log Out
-                    </a>
-                  </li>
-                </ul>
+                <ul className='dropdown-menu'>{isLoggedIn()}</ul>
               </li>
-              <li className='nav-item'></li>
             </ul>
-            <p>Track your habits and stay motivated!</p>
+            <span className='navbar-text'>
+              Track your habits and stay motivated!
+            </span>
           </div>
         </div>
       </nav>

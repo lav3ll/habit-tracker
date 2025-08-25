@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import './Homepage.css';
 import landingImages from '../utils/landing-images.svg';
+import Leaderboard from '../Leaderboard/Leaderboard';
 const Homepage = () => {
   return (
     <>
