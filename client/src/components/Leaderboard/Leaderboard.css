@@ -1,0 +1,7 @@
+.ldbr-container {
+  overflow-y: scroll;
+}
+
+tr:nth-child(even) td {
+  background-color: var(--primary-color) !important;
+}

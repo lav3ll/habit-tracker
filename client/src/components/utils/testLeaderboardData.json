@@ -1,0 +1,402 @@
+[
+  {
+    "uid": 1,
+    "rank": 1,
+    "name": "Lav3ll",
+    "title": "Momentum Master",
+    "streak": 4000,
+    "category": "Drink Water"
+  },
+  {
+    "uid": 2,
+    "rank": 2,
+    "name": "JaneDoe",
+    "title": "Habit Hero",
+    "streak": 3500,
+    "category": "Morning Run"
+  },
+  {
+    "uid": 3,
+    "rank": 3,
+    "name": "JohnSmith",
+    "title": "Streak King",
+    "streak": 3000,
+    "category": "Meditate"
+  },
+  {
+    "uid": 4,
+    "rank": 4,
+    "name": "Alice",
+    "title": "Consistency Queen",
+    "streak": 2900,
+    "category": "Read"
+  },
+  {
+    "uid": 5,
+    "rank": 5,
+    "name": "Bob",
+    "title": "Discipline Duke",
+    "streak": 2800,
+    "category": "Exercise"
+  },
+  {
+    "uid": 6,
+    "rank": 6,
+    "name": "Charlie",
+    "title": "Routine Rookie",
+    "streak": 2700,
+    "category": "Sleep 8 Hours"
+  },
+  {
+    "uid": 7,
+    "rank": 7,
+    "name": "Diana",
+    "title": "Focus Fanatic",
+    "streak": 2600,
+    "category": "Journal"
+  },
+  {
+    "uid": 8,
+    "rank": 8,
+    "name": "Ethan",
+    "title": "Persistence Pro",
+    "streak": 2500,
+    "category": "Walk 10k Steps"
+  },
+  {
+    "uid": 9,
+    "rank": 9,
+    "name": "Fiona",
+    "title": "Consistency Queen",
+    "streak": 2400,
+    "category": "No Sugar"
+  },
+  {
+    "uid": 10,
+    "rank": 10,
+    "name": "George",
+    "title": "Streak Starter",
+    "streak": 2300,
+    "category": "Floss Teeth"
+  },
+  {
+    "uid": 11,
+    "rank": 11,
+    "name": "Hannah",
+    "title": "Motivation Maven",
+    "streak": 2200,
+    "category": "Learn a Language"
+  },
+  {
+    "uid": 12,
+    "rank": 12,
+    "name": "Ian",
+    "title": "Habit Hacker",
+    "streak": 2100,
+    "category": "Drink Water"
+  },
+  {
+    "uid": 13,
+    "rank": 13,
+    "name": "Jessica",
+    "title": "Routine Rockstar",
+    "streak": 2000,
+    "category": "Exercise"
+  },
+  {
+    "uid": 14,
+    "rank": 14,
+    "name": "Kevin",
+    "title": "Streak Master",
+    "streak": 1950,
+    "category": "Meditate"
+  },
+  {
+    "uid": 15,
+    "rank": 15,
+    "name": "Laura",
+    "title": "Habit Hero",
+    "streak": 1900,
+    "category": "Read"
+  },
+  {
+    "uid": 16,
+    "rank": 16,
+    "name": "Michael",
+    "title": "Consistency Champ",
+    "streak": 1850,
+    "category": "Sleep 8 Hours"
+  },
+  {
+    "uid": 17,
+    "rank": 17,
+    "name": "Nina",
+    "title": "Discipline Diva",
+    "streak": 1800,
+    "category": "Journal"
+  },
+  {
+    "uid": 18,
+    "rank": 18,
+    "name": "Oscar",
+    "title": "Routine Ruler",
+    "streak": 1750,
+    "category": "Walk 10k Steps"
+  },
+  {
+    "uid": 19,
+    "rank": 19,
+    "name": "Paula",
+    "title": "Focus Fanatic",
+    "streak": 1700,
+    "category": "No Sugar"
+  },
+  {
+    "uid": 20,
+    "rank": 20,
+    "name": "Quentin",
+    "title": "Persistence Pro",
+    "streak": 1650,
+    "category": "Floss Teeth"
+  },
+  {
+    "uid": 21,
+    "rank": 21,
+    "name": "Rachel",
+    "title": "Motivation Maven",
+    "streak": 1600,
+    "category": "Learn a Language"
+  },
+  {
+    "uid": 22,
+    "rank": 22,
+    "name": "Steve",
+    "title": "Habit Hacker",
+    "streak": 1550,
+    "category": "Drink Water"
+  },
+  {
+    "uid": 23,
+    "rank": 23,
+    "name": "Tina",
+    "title": "Routine Rockstar",
+    "streak": 1500,
+    "category": "Exercise"
+  },
+  {
+    "uid": 24,
+    "rank": 24,
+    "name": "Ulysses",
+    "title": "Streak Master",
+    "streak": 1450,
+    "category": "Meditate"
+  },
+  {
+    "uid": 25,
+    "rank": 25,
+    "name": "Victoria",
+    "title": "Habit Hero",
+    "streak": 1400,
+    "category": "Read"
+  },
+  {
+    "uid": 26,
+    "rank": 26,
+    "name": "William",
+    "title": "Consistency Champ",
+    "streak": 1350,
+    "category": "Sleep 8 Hours"
+  },
+  {
+    "uid": 27,
+    "rank": 27,
+    "name": "Xena",
+    "title": "Discipline Diva",
+    "streak": 1300,
+    "category": "Journal"
+  },
+  {
+    "uid": 28,
+    "rank": 28,
+    "name": "Yann",
+    "title": "Routine Ruler",
+    "streak": 1250,
+    "category": "Walk 10k Steps"
+  },
+  {
+    "uid": 29,
+    "rank": 29,
+    "name": "Zoe",
+    "title": "Focus Fanatic",
+    "streak": 1200,
+    "category": "No Sugar"
+  },
+  {
+    "uid": 30,
+    "rank": 30,
+    "name": "Aaron",
+    "title": "Persistence Pro",
+    "streak": 1150,
+    "category": "Floss Teeth"
+  },
+  {
+    "uid": 31,
+    "rank": 31,
+    "name": "Bella",
+    "title": "Motivation Maven",
+    "streak": 1100,
+    "category": "Learn a Language"
+  },
+  {
+    "uid": 32,
+    "rank": 32,
+    "name": "Carter",
+    "title": "Habit Hacker",
+    "streak": 1050,
+    "category": "Drink Water"
+  },
+  {
+    "uid": 33,
+    "rank": 33,
+    "name": "Dana",
+    "title": "Routine Rockstar",
+    "streak": 1000,
+    "category": "Exercise"
+  },
+  {
+    "uid": 34,
+    "rank": 34,
+    "name": "Eli",
+    "title": "Streak Master",
+    "streak": 950,
+    "category": "Meditate"
+  },
+  {
+    "uid": 35,
+    "rank": 35,
+    "name": "Faith",
+    "title": "Habit Hero",
+    "streak": 900,
+    "category": "Read"
+  },
+  {
+    "uid": 36,
+    "rank": 36,
+    "name": "Gabe",
+    "title": "Consistency Champ",
+    "streak": 850,
+    "category": "Sleep 8 Hours"
+  },
+  {
+    "uid": 37,
+    "rank": 37,
+    "name": "Holly",
+    "title": "Discipline Diva",
+    "streak": 800,
+    "category": "Journal"
+  },
+  {
+    "uid": 38,
+    "rank": 38,
+    "name": "Ivan",
+    "title": "Routine Ruler",
+    "streak": 750,
+    "category": "Walk 10k Steps"
+  },
+  {
+    "uid": 39,
+    "rank": 39,
+    "name": "Jade",
+    "title": "Focus Fanatic",
+    "streak": 700,
+    "category": "No Sugar"
+  },
+  {
+    "uid": 40,
+    "rank": 40,
+    "name": "Kyle",
+    "title": "Persistence Pro",
+    "streak": 650,
+    "category": "Floss Teeth"
+  },
+  {
+    "uid": 41,
+    "rank": 41,
+    "name": "Lara",
+    "title": "Motivation Maven",
+    "streak": 600,
+    "category": "Learn a Language"
+  },
+  {
+    "uid": 42,
+    "rank": 42,
+    "name": "Mark",
+    "title": "Habit Hacker",
+    "streak": 550,
+    "category": "Drink Water"
+  },
+  {
+    "uid": 43,
+    "rank": 43,
+    "name": "Nora",
+    "title": "Routine Rockstar",
+    "streak": 500,
+    "category": "Exercise"
+  },
+  {
+    "uid": 44,
+    "rank": 44,
+    "name": "Owen",
+    "title": "Streak Master",
+    "streak": 450,
+    "category": "Meditate"
+  },
+  {
+    "uid": 45,
+    "rank": 45,
+    "name": "Pam",
+    "title": "Habit Hero",
+    "streak": 400,
+    "category": "Read"
+  },
+  {
+    "uid": 46,
+    "rank": 46,
+    "name": "Quinn",
+    "title": "Consistency Champ",
+    "streak": 350,
+    "category": "Sleep 8 Hours"
+  },
+  {
+    "uid": 47,
+    "rank": 47,
+    "name": "Ralph",
+    "title": "Discipline Diva",
+    "streak": 300,
+    "category": "Journal"
+  },
+  {
+    "uid": 48,
+    "rank": 48,
+    "name": "Sophie",
+    "title": "Routine Ruler",
+    "streak": 250,
+    "category": "Walk 10k Steps"
+  },
+  {
+    "uid": 49,
+    "rank": 49,
+    "name": "Tom",
+    "title": "Focus Fanatic",
+    "streak": 200,
+    "category": "No Sugar"
+  },
+  {
+    "uid": 50,
+    "rank": 50,
+    "name": "Uma",
+    "title": "Persistence Pro",
+    "streak": 150,
+    "category": "Floss Teeth"
+  }
+]

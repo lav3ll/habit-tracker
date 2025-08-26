@@ -2,11 +2,12 @@
   height: 100vh;
   background-size: cover !important;
   background-repeat: no-repeat !important;
+  overflow-y: hidden !important;
 }
 
 .homepage-container::before {
   content: '';
-  position: absolute;
+  position: fixed; /* instead of absolute */
   top: 0;
   left: 0;
   width: 100%;
