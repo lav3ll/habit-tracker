@@ -51,7 +51,7 @@ const Homepage = () => {
         </div>
       </div>
 
-      <Link className='signup-btn' to='/Settings'>
+      <Link className='signup-btn' to='/signup'>
         <h2>JOIN NOW</h2>
       </Link>
     </>

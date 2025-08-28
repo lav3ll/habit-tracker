@@ -66,29 +66,31 @@ const Leaderboard = () => {
         </div>
 
         {/* Leaderboard table */}
-        <div className='container'>
-          <table className='table table-striped table-hover align-middle'>
-            <thead>
-              <tr>
-                <th scope='col'>Rank</th>
-                <th scope='col'>Player</th>
-                <th scope='col'>Title</th>
-                <th scope='col'>Streak</th>
-                <th scope='col'>Category</th>
-              </tr>
-            </thead>
-            <tbody>
-              {testData.map((user, index) => (
-                <tr key={user.uid}>
-                  <td className='ldbr-td'>{user.rank}</td>
-                  <td className='ldbr-td'>{user.name}</td>
-                  <td className='ldbr-td'>{user.title}</td>
-                  <td className='ldbr-td'>{user.streak}</td>
-                  <td className='ldbr-td'>{user.category}</td>
+        <div className='container px-0'>
+          <div className='table-responsive'>
+            <table className='table table-striped table-hover align-middle text-center'>
+              <thead className='table-light'>
+                <tr>
+                  <th scope='col'>Rank</th>
+                  <th scope='col'>Player</th>
+                  <th scope='col'>Title</th>
+                  <th scope='col'>Streak</th>
+                  <th scope='col'>Category</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {testData.map((user) => (
+                  <tr key={user.uid}>
+                    <td className='ldbr-td'>{user.rank}</td>
+                    <td className='ldbr-td text-truncate'>{user.name}</td>
+                    <td className='ldbr-td text-truncate'>{user.title}</td>
+                    <td className='ldbr-td'>{user.streak}</td>
+                    <td className='ldbr-td text-truncate'>{user.category}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
