@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SignUp.css';
-import { useEffect, useState } from 'react';
 import TimezonePicker from '../common/TimeZonePicker/TimeZonePicker';
 
 const SignUp = () => {
@@ -8,52 +7,23 @@ const SignUp = () => {
     username: '',
     email: '',
     password: '',
+    timezone: '',
+    theme: '',
+    reminderTime: '',
   });
 
-  const signUpModalElements = document.querySelectorAll(
-    '.signup-modal-container'
+  const handleNext = (e) => {
+    e.preventDefault();
+    console.log('Current inputs:', inputs);
+    // TODO: advance step or navigate
+  };
+
+  const times = Array.from(
+    { length: 24 },
+    (_, i) => `${i.toString().padStart(2, '0')}:00`
   );
 
-  useEffect(() => {
-    signUpModalElements.forEach((signUpModal) => {
-      const signUpBtn = signUpModal.querySelector('.btn');
-
-      if (signUpBtn) {
-        signUpBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          console.log(inputs.email);
-        });
-      }
-    });
-
-    // cleanup to avoid duplicate listeners
-    return () => {
-      signUpModalElements.forEach((signUpModal) => {
-        const signUpBtn = signUpModal.querySelector('.btn');
-        if (signUpBtn) {
-          signUpBtn.replaceWith(signUpBtn.cloneNode(true));
-        }
-      });
-    };
-  }, []);
-
-  function handleClick(e) {
-    e.preventDefault();
-
-    //Send data/save data then move on to the next page
-
-    /////////////////////////////////// Page 1 /////////////////////////////////
-    //is the username available?
-
-    // does the email address already exist?
-
-    //is the password to short?
-    //is the password to long
-    //password entered does not match?
-    // does the password contain an upper/lowercase/numeral/special character?
-
-    // if all are not satisfied then click does nothing
-  }
+  console.log(times);
 
   return (
     <>
@@ -63,36 +33,42 @@ const SignUp = () => {
           <h2 className='modal__header'>
             Sign up and <span className='highlight'>conquer</span>
             <br />
-            your habits in less than &nbsp;
+            your habits in less than&nbsp;
             <span className='highlight'>5 minutes</span>
           </h2>
+
           <form className='modal__form'>
-            <label>Username</label>
+            <label htmlFor='signup-username'>Username</label>
             <input
-              type='text'
               id='signup-username'
+              type='text'
               value={inputs.username}
               onChange={(e) =>
-                setInputs({ ...inputs, username: e.target.value })
+                setInputs((s) => ({ ...s, username: e.target.value }))
               }
             />
-            <label>Email</label>
+
+            <label htmlFor='signup-email'>Email</label>
             <input
-              type='email'
               id='signup-email'
+              type='email'
               value={inputs.email}
-              onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+              onChange={(e) =>
+                setInputs((s) => ({ ...s, email: e.target.value }))
+              }
             />
-            <label>Password</label>
+
+            <label htmlFor='signup-password'>Password</label>
             <input
-              type='password'
               id='signup-password'
+              type='password'
               value={inputs.password}
               onChange={(e) =>
-                setInputs({ ...inputs, password: e.target.value })
+                setInputs((s) => ({ ...s, password: e.target.value }))
               }
             />
-            <button className='btn' onClick={handleClick}>
+
+            <button type='button' className='btn' onClick={handleNext}>
               Next step &rarr;
             </button>
           </form>
@@ -100,52 +76,71 @@ const SignUp = () => {
       </div>
 
       {/* Register Form Page 2 */}
-      <div className='signup-modal-container signup-mdl-2 '>
+      <div className='signup-modal-container signup-mdl-2'>
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Preferences</h2>
+
           <form className='modal__form'>
             <div className='mb-3'>
               <label className='form-label'>Time Zone</label>
-              <TimezonePicker />
-
-              <input
-                type='text'
-                className='form-control'
-                id='signup-timezone'
+              <TimezonePicker
+                value={inputs.timezone}
+                onChange={(value) =>
+                  setInputs((s) => ({ ...s, timezone: value }))
+                }
               />
             </div>
 
             <div className='mb-3'>
               <label className='form-label'>Daily Reminder Time</label>
-              <input
-                type='text'
+              <select
+                id='signup-d-reminder'
                 className='form-control'
-                id='signup-dremindera'
-              />
+                value={inputs.reminderTime}
+                onChange={(e) =>
+                  setInputs({ ...inputs, reminderTime: e.target.value })
+                }
+              >
+                <option value=''>Select a time</option>
+                {times.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className='mb-3'>
-              <label className='form-label'>Theme</label>
-              <div className='d-flex gap-3'>
-                <div className='form-check'>
+              <label className='form-label d-block'>Theme</label>
+              <div className='d-flex gap-3 align-items-center'>
+                <div className='form-check form-check-inline'>
                   <input
                     className='form-check-input'
                     type='radio'
                     name='theme'
                     id='light-mode'
                     value='light'
+                    checked={inputs.theme === 'light'}
+                    onChange={(e) =>
+                      setInputs((s) => ({ ...s, theme: e.target.value }))
+                    }
                   />
                   <label className='form-check-label' htmlFor='light-mode'>
                     Light Mode
                   </label>
                 </div>
-                <div className='form-check'>
+
+                <div className='form-check form-check-inline'>
                   <input
                     className='form-check-input'
                     type='radio'
                     name='theme'
                     id='dark-mode'
                     value='dark'
+                    checked={inputs.theme === 'dark'}
+                    onChange={(e) =>
+                      setInputs((s) => ({ ...s, theme: e.target.value }))
+                    }
                   />
                   <label className='form-check-label' htmlFor='dark-mode'>
                     Dark Mode
@@ -154,32 +149,33 @@ const SignUp = () => {
               </div>
             </div>
 
-            <button className='btn' onClick={handleClick}>
+            <button type='button' className='btn' onClick={handleNext}>
               Next step &rarr;
             </button>
           </form>
         </div>
       </div>
-      {/* Register Form Page 3 */}
 
-      <div className='signup-modal-container signup-mdl-3 hidden '>
+      {/* Register Form Page 3 */}
+      <div className='signup-modal-container signup-mdl-3 hidden'>
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Profile</h2>
+
           <form className='modal__form'>
             <div className='mb-3'>
               <label className='form-label'>Avatar Selection</label>
-              <input type='dropdown' className='form-control' />
+              <input
+                type='text'
+                className='form-control'
+                placeholder='Pick an avatar'
+              />
             </div>
 
             <div className='mb-3'>
               <label htmlFor='focus-area'>Focus Area</label>
-              <select
-                id='focus-area'
-                name='focus-area'
-                className='form-control'
-              >
+              <select id='focus-area' className='form-control'>
                 <option value=''>Select an Area of Focus</option>
-                <option value='health'>Health & Fitness</option>
+                <option value='health'>Health &amp; Fitness</option>
                 <option value='productivity'>Productivity</option>
                 <option value='mindfulness'>Mindfulness</option>
                 <option value='learning'>Learning</option>
@@ -188,12 +184,8 @@ const SignUp = () => {
 
             <div className='mb-3'>
               <label htmlFor='motivation-style'>Motivation Style</label>
-              <select
-                id='motivation-style'
-                name='motivation-style'
-                className='form-control'
-              >
-                <option value=''>Select your Motivation style </option>
+              <select id='motivation-style' className='form-control'>
+                <option value=''>Select your Motivation style</option>
                 <option value='rewards'>Rewards / Incentives</option>
                 <option value='competition'>Competition</option>
                 <option value='streaks'>Streaks / Consistency</option>
@@ -201,7 +193,8 @@ const SignUp = () => {
                 <option value='self-growth'>Personal Growth</option>
               </select>
             </div>
-            <button className='btn' onClick={handleClick}>
+
+            <button type='button' className='btn' onClick={handleNext}>
               Next step &rarr;
             </button>
           </form>
