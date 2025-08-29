@@ -1,6 +1,7 @@
 import React from 'react';
 import './SignUp.css';
 import { useEffect, useState } from 'react';
+import TimezonePicker from '../common/TimeZonePicker/TimeZonePicker';
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -12,19 +13,6 @@ const SignUp = () => {
   const signUpModalElements = document.querySelectorAll(
     '.signup-modal-container'
   );
-
-  //   function verifyUserInputs(param1, param2, param3) {
-  //     if (
-  //       param1.value.trim() === '' ||
-  //       param2.value.trim() === '' ||
-  //       param3.value.trim() === ''
-  //     ) {
-  //       alert('false');
-  //       return false;
-  //     } else {
-  //       alert('Information Confirmed');
-  //     }
-  //   }
 
   useEffect(() => {
     signUpModalElements.forEach((signUpModal) => {
@@ -70,7 +58,7 @@ const SignUp = () => {
   return (
     <>
       {/* Register Form Page 1 */}
-      <div className='signup-modal-container signup-mdl-1'>
+      <div className='signup-modal-container signup-mdl-1 hidden'>
         <div className='signup-modal'>
           <h2 className='modal__header'>
             Sign up and <span className='highlight'>conquer</span>
@@ -112,12 +100,14 @@ const SignUp = () => {
       </div>
 
       {/* Register Form Page 2 */}
-      <div className='signup-modal-container signup-mdl-2 hidden'>
+      <div className='signup-modal-container signup-mdl-2 '>
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Preferences</h2>
           <form className='modal__form'>
             <div className='mb-3'>
               <label className='form-label'>Time Zone</label>
+              <TimezonePicker />
+
               <input
                 type='text'
                 className='form-control'
