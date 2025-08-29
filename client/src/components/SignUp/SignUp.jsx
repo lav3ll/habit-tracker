@@ -1,16 +1,76 @@
 import React from 'react';
 import './SignUp.css';
+import { useEffect, useState } from 'react';
 
 const SignUp = () => {
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const signUpModalElements = document.querySelectorAll(
+    '.signup-modal-container'
+  );
+
+  //   function verifyUserInputs(param1, param2, param3) {
+  //     if (
+  //       param1.value.trim() === '' ||
+  //       param2.value.trim() === '' ||
+  //       param3.value.trim() === ''
+  //     ) {
+  //       alert('false');
+  //       return false;
+  //     } else {
+  //       alert('Information Confirmed');
+  //     }
+  //   }
+
+  useEffect(() => {
+    signUpModalElements.forEach((signUpModal) => {
+      const signUpBtn = signUpModal.querySelector('.btn');
+
+      if (signUpBtn) {
+        signUpBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          console.log(inputs.email);
+        });
+      }
+    });
+
+    // cleanup to avoid duplicate listeners
+    return () => {
+      signUpModalElements.forEach((signUpModal) => {
+        const signUpBtn = signUpModal.querySelector('.btn');
+        if (signUpBtn) {
+          signUpBtn.replaceWith(signUpBtn.cloneNode(true));
+        }
+      });
+    };
+  }, []);
+
   function handleClick(e) {
     e.preventDefault();
-    alert('click');
+
+    //Send data/save data then move on to the next page
+
+    /////////////////////////////////// Page 1 /////////////////////////////////
+    //is the username available?
+
+    // does the email address already exist?
+
+    //is the password to short?
+    //is the password to long
+    //password entered does not match?
+    // does the password contain an upper/lowercase/numeral/special character?
+
+    // if all are not satisfied then click does nothing
   }
 
   return (
     <>
       {/* Register Form Page 1 */}
-      <div className='signup-modal-container hidden'>
+      <div className='signup-modal-container signup-mdl-1'>
         <div className='signup-modal'>
           <h2 className='modal__header'>
             Sign up and <span className='highlight'>conquer</span>
@@ -20,14 +80,30 @@ const SignUp = () => {
           </h2>
           <form className='modal__form'>
             <label>Username</label>
-            <input type='text' />
-            <label>Email Address</label>
-            <input type='email' />
-            {/*Link to nextJS to send a verification email? */}
+            <input
+              type='text'
+              id='signup-username'
+              value={inputs.username}
+              onChange={(e) =>
+                setInputs({ ...inputs, username: e.target.value })
+              }
+            />
+            <label>Email</label>
+            <input
+              type='email'
+              id='signup-email'
+              value={inputs.email}
+              onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+            />
             <label>Password</label>
-            <input type='text' />
-            <label>Confirm Password</label>
-            <input type='text' />
+            <input
+              type='password'
+              id='signup-password'
+              value={inputs.password}
+              onChange={(e) =>
+                setInputs({ ...inputs, password: e.target.value })
+              }
+            />
             <button className='btn' onClick={handleClick}>
               Next step &rarr;
             </button>
@@ -36,18 +112,26 @@ const SignUp = () => {
       </div>
 
       {/* Register Form Page 2 */}
-      <div className='signup-modal-container hidden'>
+      <div className='signup-modal-container signup-mdl-2 hidden'>
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Preferences</h2>
           <form className='modal__form'>
             <div className='mb-3'>
               <label className='form-label'>Time Zone</label>
-              <input type='text' className='form-control' />
+              <input
+                type='text'
+                className='form-control'
+                id='signup-timezone'
+              />
             </div>
 
             <div className='mb-3'>
               <label className='form-label'>Daily Reminder Time</label>
-              <input type='text' className='form-control' />
+              <input
+                type='text'
+                className='form-control'
+                id='signup-dremindera'
+              />
             </div>
 
             <div className='mb-3'>
@@ -80,13 +164,15 @@ const SignUp = () => {
               </div>
             </div>
 
-            <button className='btn btn-primary w-100'>Next step &rarr;</button>
+            <button className='btn' onClick={handleClick}>
+              Next step &rarr;
+            </button>
           </form>
         </div>
       </div>
       {/* Register Form Page 3 */}
 
-      <div className='signup-modal-container'>
+      <div className='signup-modal-container signup-mdl-3 hidden '>
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Profile</h2>
           <form className='modal__form'>
@@ -125,7 +211,9 @@ const SignUp = () => {
                 <option value='self-growth'>Personal Growth</option>
               </select>
             </div>
-            <button className='btn btn-primary w-100'>Next step &rarr;</button>
+            <button className='btn' onClick={handleClick}>
+              Next step &rarr;
+            </button>
           </form>
         </div>
       </div>
