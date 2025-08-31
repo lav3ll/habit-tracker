@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TimezoneSelect from 'react-timezone-select';
-import './TimeZonePicker.jsx';
+import './TimeZonePicker.css';
 
 export default function TimezonePicker({ value, onChange }) {
   const [tz, setTz] = useState(

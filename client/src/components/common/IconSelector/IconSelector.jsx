@@ -19,7 +19,7 @@ images.sort((a, b) => {
 
 const IconSelector = ({ value, onSelect }) => {
   return (
-    <div className='row g-3 test'>
+    <div className='row g-3 mb-3'>
       {images.slice(0, 8).map(({ key, src }) => (
         <div
           key={key}
@@ -29,6 +29,7 @@ const IconSelector = ({ value, onSelect }) => {
             type='button'
             className='img-btn'
             onClick={() => onSelect(src)}
+            required
           >
             <img src={src} alt={key} className='icon-img' />
           </button>

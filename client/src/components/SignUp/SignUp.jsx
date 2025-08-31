@@ -13,15 +13,20 @@ const SignUp = () => {
     theme: '',
     reminderTime: '',
     avatar: '',
+    focus: '',
+    motivation: '',
   });
+  const hideContainer = (formEl) => {
+    const container = formEl.closest('.signup-modal-container');
+    if (container) container.classList.add('hidden');
+  };
 
   const handleNext = (e) => {
-    e.preventDefault();
-    const modal = e.target.closest('.signup-modal-container');
+    // e.preventDefault();
     console.log(inputs);
-    if (modal) {
-      modal.classList.add('hidden');
-    }
+    const modal = e.target.closest('.signup-modal-container');
+
+    if (modal) modal.classList.add('hidden');
     // TODO: advance step or navigate
   };
 
@@ -42,7 +47,19 @@ const SignUp = () => {
             <span className='highlight'>5 minutes</span>
           </h2>
 
-          <form className='modal__form'>
+          <form
+            className='modal__form'
+            onSubmit={(e) => {
+              const form = e.currentTarget;
+              if (!form.checkValidity()) {
+                e.preventDefault();
+                form.reportValidity();
+                return;
+              }
+              e.preventDefault();
+              hideContainer(form);
+            }}
+          >
             <label htmlFor='signup-username'>Username</label>
             <input
               id='signup-username'
@@ -51,8 +68,9 @@ const SignUp = () => {
               onChange={(e) =>
                 setInputs((s) => ({ ...s, username: e.target.value }))
               }
+              name='username'
+              required
             />
-
             <label htmlFor='signup-email'>Email</label>
             <input
               id='signup-email'
@@ -61,8 +79,9 @@ const SignUp = () => {
               onChange={(e) =>
                 setInputs((s) => ({ ...s, email: e.target.value }))
               }
+              name='email'
+              required
             />
-
             <label htmlFor='signup-password'>Password</label>
             <input
               id='signup-password'
@@ -71,10 +90,12 @@ const SignUp = () => {
               onChange={(e) =>
                 setInputs((s) => ({ ...s, password: e.target.value }))
               }
+              name='password'
+              required
             />
 
-            <button type='button' className='btn' onClick={handleNext}>
-              Next step &rarr;
+            <button type='submit' className='btn'>
+              Next step →
             </button>
           </form>
         </div>
@@ -85,16 +106,44 @@ const SignUp = () => {
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Preferences</h2>
 
-          <form className='modal__form'>
-            <div className='mb-3'>
-              <label className='form-label'>Time Zone</label>
-              <TimezonePicker
-                value={inputs.timezone}
-                onChange={(value) =>
-                  setInputs((s) => ({ ...s, timezone: value }))
-                }
-              />
-            </div>
+          <form
+            className='modal__form'
+            onSubmit={(e) => {
+              const form = e.currentTarget;
+              const tzVal = form.elements['timezone']?.value?.trim();
+              if (!tzVal || !form.checkValidity()) {
+                e.preventDefault();
+                form.reportValidity();
+                if (!tzVal) alert('Please enter a timezone');
+                return;
+              }
+              e.preventDefault();
+              hideContainer(form);
+            }}
+          >
+            <label className='form-label'>Time Zone</label>
+            <TimezonePicker
+              value={inputs.timezone}
+              onChange={(value) =>
+                setInputs((s) => ({ ...s, timezone: value }))
+              }
+            />
+            {/* Mirror timezone into  input so native validation can run */}
+            <input
+              type='text'
+              name='timezone'
+              value={inputs.timezone || ''}
+              onChange={() => {}}
+              style={{
+                position: 'absolute',
+                left: '-9999px',
+                width: 0,
+                height: 0,
+                opacity: 0,
+              }}
+              aria-hidden='true'
+              tabIndex={-1}
+            />
 
             <div className='mb-3'>
               <label className='form-label'>Daily Reminder Time</label>
@@ -105,6 +154,8 @@ const SignUp = () => {
                 onChange={(e) =>
                   setInputs({ ...inputs, reminderTime: e.target.value })
                 }
+                name='reminderTime'
+                required
               >
                 <option value=''>Select a time</option>
                 {times.map((time) => (
@@ -114,7 +165,6 @@ const SignUp = () => {
                 ))}
               </select>
             </div>
-
             <div className='mb-3'>
               <label className='form-label d-block'>Theme</label>
               <div className='d-flex gap-3 align-items-center'>
@@ -129,12 +179,12 @@ const SignUp = () => {
                     onChange={(e) =>
                       setInputs((s) => ({ ...s, theme: e.target.value }))
                     }
+                    required
                   />
                   <label className='form-check-label' htmlFor='light-mode'>
                     Light Mode
                   </label>
                 </div>
-
                 <div className='form-check form-check-inline'>
                   <input
                     className='form-check-input'
@@ -146,6 +196,7 @@ const SignUp = () => {
                     onChange={(e) =>
                       setInputs((s) => ({ ...s, theme: e.target.value }))
                     }
+                    required
                   />
                   <label className='form-check-label' htmlFor='dark-mode'>
                     Dark Mode
@@ -154,8 +205,8 @@ const SignUp = () => {
               </div>
             </div>
 
-            <button type='button' className='btn' onClick={handleNext}>
-              Next step &rarr;
+            <button type='submit' className='btn'>
+              Next step →
             </button>
           </form>
         </div>
@@ -166,41 +217,61 @@ const SignUp = () => {
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Profile</h2>
 
-          <form className='modal__form'>
-            <div className='mb-3'>
-              <label className='form-label'>Avatar Selection</label>
+          <form
+            className='modal__form'
+            onSubmit={(e) => {
+              const form = e.currentTarget;
+              if (!form.checkValidity()) {
+                e.preventDefault();
+                form.reportValidity();
+                return;
+              }
+              e.preventDefault();
+              hideContainer(form);
+            }}
+          >
+            <IconSelector
+              value={inputs.avatar}
+              onSelect={(src) => setInputs((s) => ({ ...s, avatar: src }))}
+            />
 
-              <IconSelector
-                value={inputs.avatar}
-                onSelect={(src) => setInputs((s) => ({ ...s, avatar: src }))}
-              />
-            </div>
+            <label htmlFor='focus-area'>Focus Area</label>
+            <select
+              id='focus-area'
+              className='form-control mb-3'
+              value={inputs.focus}
+              onChange={(e) => setInputs({ ...inputs, focus: e.target.value })}
+              name='focus'
+              required
+            >
+              <option value=''>Select an Area of Focus</option>
+              <option value='health'>Health &amp; Fitness</option>
+              <option value='productivity'>Productivity</option>
+              <option value='mindfulness'>Mindfulness</option>
+              <option value='learning'>Learning</option>
+            </select>
 
-            <div className='mb-3'>
-              <label htmlFor='focus-area'>Focus Area</label>
-              <select id='focus-area' className='form-control'>
-                <option value=''>Select an Area of Focus</option>
-                <option value='health'>Health &amp; Fitness</option>
-                <option value='productivity'>Productivity</option>
-                <option value='mindfulness'>Mindfulness</option>
-                <option value='learning'>Learning</option>
-              </select>
-            </div>
+            <label htmlFor='motivation-style'>Motivation Style</label>
+            <select
+              id='motivation-style'
+              className='form-control mb-3'
+              value={inputs.motivation}
+              onChange={(e) =>
+                setInputs({ ...inputs, motivation: e.target.value })
+              }
+              name='motivation'
+              required
+            >
+              <option value=''>Select your Motivation style</option>
+              <option value='rewards'>Rewards / Incentives</option>
+              <option value='competition'>Competition</option>
+              <option value='streaks'>Streaks / Consistency</option>
+              <option value='accountability'>Accountability / Social</option>
+              <option value='self-growth'>Personal Growth</option>
+            </select>
 
-            <div className='mb-3'>
-              <label htmlFor='motivation-style'>Motivation Style</label>
-              <select id='motivation-style' className='form-control'>
-                <option value=''>Select your Motivation style</option>
-                <option value='rewards'>Rewards / Incentives</option>
-                <option value='competition'>Competition</option>
-                <option value='streaks'>Streaks / Consistency</option>
-                <option value='accountability'>Accountability / Social</option>
-                <option value='self-growth'>Personal Growth</option>
-              </select>
-            </div>
-
-            <button type='button' className='btn' onClick={handleNext}>
-              Next step &rarr;
+            <button type='submit' className='btn' onClick={handleNext}>
+              Finish →
             </button>
           </form>
         </div>
