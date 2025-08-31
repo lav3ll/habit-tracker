@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Habit from './models/Habit.js'; // ✅ make sure this has the correct path and `.js`
 import User from './models/User.js';
+import bcrypt from 'bcryptjs';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -66,6 +67,7 @@ app.delete('/habits/:id', async (req, res) => {
 
 // Sign Up route
 app.post('/users', async (req, res) => {
+  console.log('POST /users body:', req.body);
   try {
     const {
       username,
