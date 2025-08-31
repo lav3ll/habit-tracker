@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Habit from './models/Habit.js'; // ✅ make sure this has the correct path and `.js`
+import User from './models/User.js';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -60,6 +61,67 @@ app.delete('/habits/:id', async (req, res) => {
     res.json({ message: 'Habit deleted' });
   } catch (err) {
     res.status(400).json({ error: err.message });
+  }
+});
+
+// Sign Up route
+app.post('/users', async (req, res) => {
+  try {
+    const {
+      username,
+      email,
+      password,
+      timezone,
+      reminderTime,
+      avatar,
+      focus,
+      motivation,
+    } = req.body;
+
+    if (!username || !email || !password || !timezone) {
+      return res.status(422).json({ error: 'Missing required fields' });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    const user = await User.create({
+      username,
+      email,
+      passwordHash,
+      timezone,
+      reminderTime,
+      avatar,
+      focus,
+      motivation,
+    });
+
+    // never return passwordHash
+    res.status(201).json({
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      timezone: user.timezone,
+      reminderTime: user.reminderTime,
+      avatar: user.avatar,
+      focus: user.focus,
+      motivation: user.motivation,
+      createdAt: user.createdAt,
+    });
+  } catch (err) {
+    if (err.code === 11000) {
+      // duplicate key (unique index)
+      const field = Object.keys(err.keyPattern || {})[0] || 'field';
+      return res.status(409).json({ error: `${field} already in use` });
+    }
+    if (err.name === 'ValidationError') {
+      return res.status(422).json({
+        errors: Object.fromEntries(
+          Object.entries(err.errors).map(([k, v]) => [k, v.message])
+        ),
+      });
+    }
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
