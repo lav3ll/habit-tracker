@@ -14,7 +14,11 @@ const SignUp = () => {
 
   const handleNext = (e) => {
     e.preventDefault();
-    console.log('Current inputs:', inputs);
+    const modal = e.target.closest('.signup-modal-container');
+    console.log(modal);
+    if (modal) {
+      modal.classList.add('hidden');
+    }
     // TODO: advance step or navigate
   };
 
@@ -22,8 +26,6 @@ const SignUp = () => {
     { length: 24 },
     (_, i) => `${i.toString().padStart(2, '0')}:00`
   );
-
-  console.log(times);
 
   return (
     <>
@@ -76,7 +78,7 @@ const SignUp = () => {
       </div>
 
       {/* Register Form Page 2 */}
-      <div className='signup-modal-container signup-mdl-2'>
+      <div className='signup-modal-container signup-mdl-2 hidden'>
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Preferences</h2>
 
@@ -157,7 +159,7 @@ const SignUp = () => {
       </div>
 
       {/* Register Form Page 3 */}
-      <div className='signup-modal-container signup-mdl-3 hidden'>
+      <div className='signup-modal-container signup-mdl-3'>
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Profile</h2>
 
