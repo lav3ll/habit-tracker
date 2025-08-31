@@ -39,6 +39,8 @@ app.get('/habits', async (req, res) => {
   }
 });
 
+//Route to fetch user Data
+
 // Route to update a habit by its ID
 app.patch('/habits/:id', async (req, res) => {
   try {
