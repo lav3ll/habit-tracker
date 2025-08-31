@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './SignUp.css';
 import TimezonePicker from '../common/TimeZonePicker/TimeZonePicker';
-
 import IconSelector from '../common/IconSelector/IconSelector';
+import { v4 as uuidv4 } from 'uuid';
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -15,6 +15,7 @@ const SignUp = () => {
     avatar: '',
     focus: '',
     motivation: '',
+    uui: '',
   });
 
   // track what form is currently active
@@ -25,20 +26,31 @@ const SignUp = () => {
     if (container) container.classList.add('hidden');
   };
 
-  const requiredFields = {
-    username: 'Please enter a username',
-    email: 'Enter an email',
-    password: 'Please enter a password',
-    timezone: 'Please enter a timezone',
-  };
+  const handleFinish = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
 
-  const handleNext = (e) => {
-    // e.preventDefault();
-    console.log(inputs);
-    const modal = e.target.closest('.signup-modal-container');
+    // 1) Validate avatar
+    if (!inputs.avatar) {
+      alert('Please select an avatar');
+      return;
+    }
 
-    if (modal) modal.classList.add('hidden');
-    // TODO: advance step or navigate
+    // 2) Validate native requireds
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // 3) Generate UUI
+    const uui = uuidv4();
+    setInputs((prev) => ({ ...prev, uuid: uui }));
+
+    console.log('Generated UUI:', uui);
+    console.log('Final inputs:', { ...inputs, uuid: uui });
+
+    // 4) Hide container
+    hideContainer(form);
   };
 
   const times = Array.from(
@@ -231,19 +243,7 @@ const SignUp = () => {
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Profile</h2>
 
-          <form
-            className='modal__form'
-            onSubmit={(e) => {
-              const form = e.currentTarget;
-              if (!form.checkValidity()) {
-                e.preventDefault();
-                form.reportValidity();
-                return;
-              }
-              e.preventDefault();
-              // finished!
-            }}
-          >
+          <form className='modal__form' onSubmit={handleFinish}>
             <IconSelector
               value={inputs.avatar}
               onSelect={(src) => setInputs((s) => ({ ...s, avatar: src }))}
@@ -257,7 +257,7 @@ const SignUp = () => {
               onChange={(e) => setInputs({ ...inputs, focus: e.target.value })}
               name='focus'
               required
-              disabled={step !== 3} // <— important
+              disabled={step !== 3}
             >
               <option value=''>Select an Area of Focus</option>
               <option value='health'>Health &amp; Fitness</option>

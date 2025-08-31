@@ -19,22 +19,39 @@ images.sort((a, b) => {
 
 const IconSelector = ({ value, onSelect }) => {
   return (
-    <div className='row g-3 mb-3'>
-      {images.slice(0, 8).map(({ key, src }) => (
-        <div
-          key={key}
-          className={`col-3 p-0 ${value === src ? 'selected' : ''}`}
-        >
-          <button
-            type='button'
-            className='img-btn'
-            onClick={() => onSelect(src)}
-            required
+    <div className='mb-3'>
+      <div className='row g-3 mb-2'>
+        {images.slice(0, 8).map(({ key, src }) => (
+          <div
+            key={key}
+            className={`col-3 p-0 ${value === src ? 'selected' : ''}`}
           >
-            <img src={src} alt={key} className='icon-img' />
-          </button>
-        </div>
-      ))}
+            <button
+              type='button'
+              className='img-btn'
+              onClick={() => onSelect(src)}
+            >
+              <img src={src} alt={key} className='icon-img' />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* 👇 Hidden input for validation */}
+      <input
+        type='text'
+        name='avatar'
+        value={value || ''}
+        onChange={() => {}}
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+          width: 0,
+          height: 0,
+          opacity: 0,
+        }}
+        tabIndex={-1}
+      />
     </div>
   );
 };
