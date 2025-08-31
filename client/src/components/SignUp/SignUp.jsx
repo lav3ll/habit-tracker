@@ -18,7 +18,7 @@ const SignUp = () => {
   const handleNext = (e) => {
     e.preventDefault();
     const modal = e.target.closest('.signup-modal-container');
-    console.log(modal);
+    console.log(inputs);
     if (modal) {
       modal.classList.add('hidden');
     }
@@ -33,7 +33,7 @@ const SignUp = () => {
   return (
     <>
       {/* Register Form Page 1 */}
-      <div className='signup-modal-container signup-mdl-1 hidden'>
+      <div className='signup-modal-container signup-mdl-1'>
         <div className='signup-modal'>
           <h2 className='modal__header'>
             Sign up and <span className='highlight'>conquer</span>
@@ -81,7 +81,7 @@ const SignUp = () => {
       </div>
 
       {/* Register Form Page 2 */}
-      <div className='signup-modal-container signup-mdl-2 hidden'>
+      <div className='signup-modal-container signup-mdl-2'>
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Preferences</h2>
 
