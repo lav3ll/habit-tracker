@@ -1,0 +1,18 @@
+.img-btn {
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  width: '100%';
+  aspect-ratio: 1;
+}
+
+.icon-img {
+  width: 100%;
+  height: '100%';
+  object-fit: 'cover';
+  display: 'block';
+}
+
+.icon-img:hover {
+  border: 3px solid var(--primary-color);
+}

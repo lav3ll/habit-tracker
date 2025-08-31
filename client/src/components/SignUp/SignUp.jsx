@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './SignUp.css';
 import TimezonePicker from '../common/TimeZonePicker/TimeZonePicker';
+import { IconName } from 'react-icons/gi';
+import IconSelector from '../common/IconSelector/IconSelector';
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -166,11 +168,24 @@ const SignUp = () => {
           <form className='modal__form'>
             <div className='mb-3'>
               <label className='form-label'>Avatar Selection</label>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='Pick an avatar'
-              />
+              {/* <div className='row g-3'>
+                {['🐉', '⚡', '🔥', '🌊', '🌟'].map((icon, idx) => (
+                  <div key={idx} className='col-3'>
+                    <button
+                      type='button'
+                      className={`btn w-100 ${
+                        inputs.avatar === icon
+                          ? 'btn-primary'
+                          : 'btn-outline-secondary'
+                      }`}
+                      onClick={() => setInputs({ ...inputs, avatar: icon })}
+                    >
+                      <span style={{ fontSize: '2rem' }}>{icon}</span>
+                    </button>
+                  </div>
+                ))}
+              </div> */}
+              <IconSelector inputs={inputs} setInput={setInputs} />
             </div>
 
             <div className='mb-3'>
