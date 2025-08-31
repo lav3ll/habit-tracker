@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SignUp.css';
 import TimezonePicker from '../common/TimeZonePicker/TimeZonePicker';
-import { IconName } from 'react-icons/gi';
+
 import IconSelector from '../common/IconSelector/IconSelector';
 
 const SignUp = () => {
@@ -12,6 +12,7 @@ const SignUp = () => {
     timezone: '',
     theme: '',
     reminderTime: '',
+    avatar: '',
   });
 
   const handleNext = (e) => {
