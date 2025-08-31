@@ -16,9 +16,20 @@ const SignUp = () => {
     focus: '',
     motivation: '',
   });
+
+  // track what form is currently active
+  const [step, setStep] = useState(1);
+
   const hideContainer = (formEl) => {
     const container = formEl.closest('.signup-modal-container');
     if (container) container.classList.add('hidden');
+  };
+
+  const requiredFields = {
+    username: 'Please enter a username',
+    email: 'Enter an email',
+    password: 'Please enter a password',
+    timezone: 'Please enter a timezone',
   };
 
   const handleNext = (e) => {
@@ -38,7 +49,11 @@ const SignUp = () => {
   return (
     <>
       {/* Register Form Page 1 */}
-      <div className='signup-modal-container signup-mdl-1'>
+      <div
+        className={`signup-modal-container signup-mdl-1 ${
+          step !== 1 ? 'hidden' : ''
+        }`}
+      >
         <div className='signup-modal'>
           <h2 className='modal__header'>
             Sign up and <span className='highlight'>conquer</span>
@@ -57,7 +72,7 @@ const SignUp = () => {
                 return;
               }
               e.preventDefault();
-              hideContainer(form);
+              setStep(2); // <— advance to step 2
             }}
           >
             <label htmlFor='signup-username'>Username</label>
@@ -70,6 +85,7 @@ const SignUp = () => {
               }
               name='username'
               required
+              disabled={step !== 1}
             />
             <label htmlFor='signup-email'>Email</label>
             <input
@@ -81,6 +97,7 @@ const SignUp = () => {
               }
               name='email'
               required
+              disabled={step !== 1}
             />
             <label htmlFor='signup-password'>Password</label>
             <input
@@ -92,6 +109,7 @@ const SignUp = () => {
               }
               name='password'
               required
+              disabled={step !== 1}
             />
 
             <button type='submit' className='btn'>
@@ -102,7 +120,11 @@ const SignUp = () => {
       </div>
 
       {/* Register Form Page 2 */}
-      <div className='signup-modal-container signup-mdl-2'>
+      <div
+        className={`signup-modal-container signup-mdl-2 ${
+          step !== 2 ? 'hidden' : ''
+        }`}
+      >
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Preferences</h2>
 
@@ -110,7 +132,7 @@ const SignUp = () => {
             className='modal__form'
             onSubmit={(e) => {
               const form = e.currentTarget;
-              const tzVal = form.elements['timezone']?.value?.trim();
+              const tzVal = inputs.timezone?.trim();
               if (!tzVal || !form.checkValidity()) {
                 e.preventDefault();
                 form.reportValidity();
@@ -118,7 +140,7 @@ const SignUp = () => {
                 return;
               }
               e.preventDefault();
-              hideContainer(form);
+              setStep(3); // <— advance to step 3
             }}
           >
             <label className='form-label'>Time Zone</label>
@@ -128,22 +150,7 @@ const SignUp = () => {
                 setInputs((s) => ({ ...s, timezone: value }))
               }
             />
-            {/* Mirror timezone into  input so native validation can run */}
-            <input
-              type='text'
-              name='timezone'
-              value={inputs.timezone || ''}
-              onChange={() => {}}
-              style={{
-                position: 'absolute',
-                left: '-9999px',
-                width: 0,
-                height: 0,
-                opacity: 0,
-              }}
-              aria-hidden='true'
-              tabIndex={-1}
-            />
+            {/* Mirror input (not required, not focusable) */}
 
             <div className='mb-3'>
               <label className='form-label'>Daily Reminder Time</label>
@@ -156,6 +163,7 @@ const SignUp = () => {
                 }
                 name='reminderTime'
                 required
+                disabled={step !== 2}
               >
                 <option value=''>Select a time</option>
                 {times.map((time) => (
@@ -180,6 +188,7 @@ const SignUp = () => {
                       setInputs((s) => ({ ...s, theme: e.target.value }))
                     }
                     required
+                    disabled={step !== 2}
                   />
                   <label className='form-check-label' htmlFor='light-mode'>
                     Light Mode
@@ -197,6 +206,7 @@ const SignUp = () => {
                       setInputs((s) => ({ ...s, theme: e.target.value }))
                     }
                     required
+                    disabled={step !== 2}
                   />
                   <label className='form-check-label' htmlFor='dark-mode'>
                     Dark Mode
@@ -213,7 +223,11 @@ const SignUp = () => {
       </div>
 
       {/* Register Form Page 3 */}
-      <div className='signup-modal-container signup-mdl-3'>
+      <div
+        className={`signup-modal-container signup-mdl-3 ${
+          step !== 3 ? 'hidden' : ''
+        }`}
+      >
         <div className='signup-modal p-4'>
           <h2 className='modal__header text-center mb-3'>Profile</h2>
 
@@ -227,7 +241,7 @@ const SignUp = () => {
                 return;
               }
               e.preventDefault();
-              hideContainer(form);
+              // finished!
             }}
           >
             <IconSelector
@@ -243,6 +257,7 @@ const SignUp = () => {
               onChange={(e) => setInputs({ ...inputs, focus: e.target.value })}
               name='focus'
               required
+              disabled={step !== 3} // <— important
             >
               <option value=''>Select an Area of Focus</option>
               <option value='health'>Health &amp; Fitness</option>
@@ -261,6 +276,7 @@ const SignUp = () => {
               }
               name='motivation'
               required
+              disabled={step !== 3}
             >
               <option value=''>Select your Motivation style</option>
               <option value='rewards'>Rewards / Incentives</option>
@@ -270,7 +286,7 @@ const SignUp = () => {
               <option value='self-growth'>Personal Growth</option>
             </select>
 
-            <button type='submit' className='btn' onClick={handleNext}>
+            <button type='submit' className='btn'>
               Finish →
             </button>
           </form>
