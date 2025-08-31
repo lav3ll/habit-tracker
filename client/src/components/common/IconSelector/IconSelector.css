@@ -1,4 +1,5 @@
 .img-btn {
+  all: unset;
   cursor: pointer;
   border-radius: 8px;
   overflow: hidden;
@@ -15,4 +16,9 @@
 
 .icon-img:hover {
   border: 3px solid var(--primary-color);
+}
+
+.selected .icon-img {
+  outline: 3px solid #7c3aed;
+  border-radius: 8px;
 }

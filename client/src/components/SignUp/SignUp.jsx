@@ -169,24 +169,11 @@ const SignUp = () => {
           <form className='modal__form'>
             <div className='mb-3'>
               <label className='form-label'>Avatar Selection</label>
-              {/* <div className='row g-3'>
-                {['🐉', '⚡', '🔥', '🌊', '🌟'].map((icon, idx) => (
-                  <div key={idx} className='col-3'>
-                    <button
-                      type='button'
-                      className={`btn w-100 ${
-                        inputs.avatar === icon
-                          ? 'btn-primary'
-                          : 'btn-outline-secondary'
-                      }`}
-                      onClick={() => setInputs({ ...inputs, avatar: icon })}
-                    >
-                      <span style={{ fontSize: '2rem' }}>{icon}</span>
-                    </button>
-                  </div>
-                ))}
-              </div> */}
-              <IconSelector inputs={inputs} setInput={setInputs} />
+
+              <IconSelector
+                value={inputs.avatar}
+                onSelect={(src) => setInputs((s) => ({ ...s, avatar: src }))}
+              />
             </div>
 
             <div className='mb-3'>
