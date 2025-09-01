@@ -14,6 +14,16 @@ const app = express();
 // Middleware to parse incoming JSON requests
 app.use(express.json());
 
+// import cors
+import cors from 'cors';
+app.use(
+  cors({
+    origin: ['http://localhost:3000', 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
+
 // Connect to MongoDB using Mongoose
 mongoose
   .connect(process.env.MONGO_URI)
@@ -127,5 +137,24 @@ app.post('/users', async (req, res) => {
   }
 });
 
+// List users (no passwordHash)
+app.get('/users', async (req, res) => {
+  try {
+    const { username, email } = req.query;
+
+    const filter = {};
+    if (username) filter.username = username;
+    if (email) filter.email = email;
+
+    const users = await User.find(filter)
+      .select('-passwordHash') // <-- never send password hashes
+      .lean();
+
+    res.json(users);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 // Start server and listen on port 5000
 app.listen(5000, () => console.log('Server running on port 5000'));

@@ -26,31 +26,64 @@ const SignUp = () => {
     if (container) container.classList.add('hidden');
   };
 
-  const handleFinish = (e) => {
+  const handleFinish = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
 
-    // 1) Validate avatar
+    // custom + native validation
     if (!inputs.avatar) {
       alert('Please select an avatar');
       return;
     }
-
-    // 2) Validate native requireds
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    // 3) Generate UUI
     const uui = uuidv4();
-    setInputs((prev) => ({ ...prev, uuid: uui }));
+    const payload = { ...inputs, uuid: uui }; // omit theme if you like
 
-    console.log('Generated UUI:', uui);
-    console.log('Final inputs:', { ...inputs, uuid: uui });
+    try {
+      const res = await fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
 
-    // 4) Hide container
-    hideContainer(form);
+      // Read body safely as text, then try JSON
+      const text = await res.text();
+      let data;
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch {
+        data = { raw: text };
+      }
+
+      if (!res.ok) {
+        // Show precise server error/status
+        const msg =
+          data?.error ||
+          data?.message ||
+          data?.raw ||
+          text ||
+          'Unknown server error';
+        alert(`Signup failed (${res.status} ${res.statusText}): ${msg}`);
+        console.error('Signup error:', {
+          status: res.status,
+          headers: Object.fromEntries(res.headers),
+          body: data,
+        });
+        return;
+      }
+
+      console.log('Signup success:', data);
+      hideContainer(form);
+      if (inputs.theme) localStorage.setItem('theme', inputs.theme);
+    } catch (err) {
+      // This path means the request never completed (CORS, network down, bad URL)
+      console.error('Network/Fetch error:', err);
+      alert(`Network error: ${err.message}`);
+    }
   };
 
   const times = Array.from(
