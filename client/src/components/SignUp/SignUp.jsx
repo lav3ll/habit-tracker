@@ -5,7 +5,7 @@ import IconSelector from '../common/IconSelector/IconSelector';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 
-const SignUp = () => {
+const SignUp = ({ setLoggedIn }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: '',
@@ -17,7 +17,7 @@ const SignUp = () => {
     avatar: '',
     focus: '',
     motivation: '',
-    uui: '',
+    uuid: '',
   });
 
   // track what form is currently active
@@ -42,8 +42,8 @@ const SignUp = () => {
       return;
     }
 
-    const uui = uuidv4();
-    const payload = { ...inputs, uuid: uui }; // omit theme if you like
+    const uuid = uuidv4();
+    const payload = { ...inputs, uuid: uuid }; // omit theme if you like
 
     try {
       const res = await fetch('http://localhost:5000/users', {
@@ -79,14 +79,19 @@ const SignUp = () => {
       }
 
       console.log('Signup success:', data);
+
+      // persist uuid locally in state if you need it on the client after
+      setInputs((prev) => ({ ...prev, uuid }));
+
       hideContainer(form);
 
       if (inputs.theme) {
         localStorage.setItem('theme', inputs.theme);
       }
 
-      // redirect to homepage or dashboard
-      navigate('/dashboard'); // adjust route as needed
+      // redirect to homepage or habits
+      setLoggedIn?.(true);
+      navigate('/habits'); // adjust route as needed
     } catch (err) {
       // This path means the request never completed (CORS, network down, bad URL)
       console.error('Network/Fetch error:', err);

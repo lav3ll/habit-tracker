@@ -8,6 +8,7 @@ import Leaderboard from './components/Leaderboard/Leaderboard';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import SignUp from './components/SignUp/SignUp';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -21,7 +22,8 @@ function App() {
         <Route path='/leaderboard' element={<Leaderboard />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/settings' element={<Settings />} />
-        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signup' element={<SignUp />} setLoggedIn={setLoggedIn} />
+        <Route path='/dashboard' element={<Dashboard />} />
         {loggedIn && <Route path='/habits' element={<Habits />} />}
       </Routes>
     </BrowserRouter>
