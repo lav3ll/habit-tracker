@@ -3,22 +3,20 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-const Header = () => {
-  const [loginStatus, setLoginStatus] = useState(false);
-
+const Header = ({ loggedIn, setLoggedIn }) => {
   function handleLogOut() {
     alert('Logging out...');
-    setLoginStatus(false);
+    setLoggedIn(false);
   }
 
   function handleLogIn() {
     alert('Logging In...');
-    setLoginStatus(true);
+    setLoggedIn(true);
   }
 
   // Use state directly
   function isLoggedIn() {
-    if (loginStatus) {
+    if (loggedIn) {
       return (
         <>
           <li>
