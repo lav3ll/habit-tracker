@@ -3,8 +3,10 @@ import './SignUp.css';
 import TimezonePicker from '../common/TimeZonePicker/TimeZonePicker';
 import IconSelector from '../common/IconSelector/IconSelector';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: '',
     email: '',
@@ -78,7 +80,13 @@ const SignUp = () => {
 
       console.log('Signup success:', data);
       hideContainer(form);
-      if (inputs.theme) localStorage.setItem('theme', inputs.theme);
+
+      if (inputs.theme) {
+        localStorage.setItem('theme', inputs.theme);
+      }
+
+      // redirect to homepage or dashboard
+      navigate('/dashboard'); // adjust route as needed
     } catch (err) {
       // This path means the request never completed (CORS, network down, bad URL)
       console.error('Network/Fetch error:', err);
