@@ -91,7 +91,7 @@ const SignUp = ({ setLoggedIn }) => {
 
       // redirect to homepage or habits
       setLoggedIn?.(true);
-      navigate('/habits'); // adjust route as needed
+      navigate('/dashboard'); // adjust route as needed
     } catch (err) {
       // This path means the request never completed (CORS, network down, bad URL)
       console.error('Network/Fetch error:', err);

@@ -1,17 +1,24 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = ({ loggedIn, setLoggedIn }) => {
+  const navigate = useNavigate();
   function handleLogOut() {
     alert('Logging out...');
     setLoggedIn(false);
+    navigate('./');
   }
 
   function handleLogIn() {
+    // setTimeout(() => {
+    //   alert('You have been logged out due to inactivity');
+    //   handleLogOut();
+    // }, 2000);
     alert('Logging In...');
     setLoggedIn(true);
+    navigate('./dashboard');
   }
 
   // Use state directly

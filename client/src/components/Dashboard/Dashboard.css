@@ -1,0 +1,16 @@
+.portrait {
+  width: 96px;
+  height: 96px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  overflow: hidden; /* ✅ ensures the image cannot spill */
+  background: #e9ecef;
+}
+
+.portrait img {
+  max-width: 100%; /* ✅ prevent oversized scaling */
+  max-height: 100%;
+  object-fit: contain; /* ✅ whole image fits */
+  display: block;
+}
