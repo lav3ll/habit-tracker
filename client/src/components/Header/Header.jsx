@@ -27,7 +27,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
       return (
         <>
           <li>
-            <Link className='dropdown-item' to='/profile'>
+            <Link className='dropdown-item' to='/dashboard'>
               Profile
             </Link>
           </li>

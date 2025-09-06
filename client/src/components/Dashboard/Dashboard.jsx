@@ -1,8 +1,10 @@
 import React from 'react';
 import './Dashboard.css';
 import testImage from '../utils/character-icons/11.png';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   return (
     <div className='container py-3 dashboard mt-5'>
       {/* Top name bar */}
@@ -228,9 +230,11 @@ export default function Dashboard() {
 
       <div className='d-flex align-items-center mt-3 habits'>
         <h2 className=' radius-5 fw-semibold text-center w-100'>
-          <button className='btn btn-outline-primary w-100  fw-semibold text-center'>
-            Habits
-          </button>
+          <Link className='nav-link' to='/habits'>
+            <button className='btn btn-outline-primary w-100 bg-dark  fw-semibold text-center'>
+              Habits
+            </button>
+          </Link>
         </h2>
       </div>
     </div>
