@@ -1,10 +1,9 @@
 import React from 'react';
 import './Dashboard.css';
 import testImage from '../utils/character-icons/11.png';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
-  const navigate = useNavigate();
   return (
     <div className='container py-3 dashboard mt-5'>
       {/* Top name bar */}
